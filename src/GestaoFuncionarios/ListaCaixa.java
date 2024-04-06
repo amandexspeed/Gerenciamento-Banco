@@ -1,14 +1,14 @@
 package GestaoFuncionarios;
 
-import Modelos.GerenteNegocios;
+import Modelos.Caixa;
 
-public class ListaGerenteNegocios {
+public class ListaCaixa {
 
-	NoGerenteNegocios inicio;
-	NoGerenteNegocios fim;
+	NoCaixa inicio;
+	NoCaixa fim;
 	int tamanho;
 
-	public ListaGerenteNegocios() {
+	public ListaCaixa() {
 	
 		inicio = null;
 		fim = null;
@@ -16,15 +16,15 @@ public class ListaGerenteNegocios {
 		
 	}
 
-	public ListaGerenteNegocios(NoGerenteNegocios inicio, NoGerenteNegocios fim) {
+	public ListaCaixa(NoCaixa inicio, NoCaixa fim) {
 		this.inicio = inicio;
 		this.fim = fim;
 		this.tamanho = 1;
 	}
 
-	public void inserir(GerenteNegocios gerente) {
+	public void inserir(Caixa gerente) {
 
-		NoGerenteNegocios novo = new NoGerenteNegocios();
+		NoCaixa novo = new NoCaixa();
 		novo.atual = gerente;
 		novo.proximo = null;
 		novo.anterior = this.fim;
@@ -33,9 +33,9 @@ public class ListaGerenteNegocios {
 
 	}
 
-	public void remover(GerenteNegocios gerente) {
+	public void remover(Caixa gerente) {
 		
-		NoGerenteNegocios aux = this.inicio;
+		NoCaixa aux = this.inicio;
 		
 		while(aux != null) {
 			
@@ -54,7 +54,7 @@ public class ListaGerenteNegocios {
 
 	public void listar() {
 
-		NoGerenteNegocios aux = this.inicio;
+		NoCaixa aux = this.inicio;
 
 		while(aux != null) {
 
@@ -69,18 +69,18 @@ public class ListaGerenteNegocios {
 		return this.tamanho;
 	}
 
-	public NoGerenteNegocios getInicio() {
+	public NoCaixa getInicio() {
 		return this.inicio;
 	}
 
-	public NoGerenteNegocios getFim() {
+	public NoCaixa getFim() {
 		return this.fim;
 	}
 
-	public void setInicio(NoGerenteNegocios inicio) {
+	public void setInicio(NoCaixa inicio) {
 		this.inicio = inicio;
 	}
-	public void setFim(NoGerenteNegocios fim) {
+	public void setFim(NoCaixa fim) {
 		this.fim = fim;
 	}
 
@@ -88,7 +88,7 @@ public class ListaGerenteNegocios {
 		this.tamanho = tamanho;
 	}
 
-	public void setTamanho(NoGerenteNegocios aux) {
+	public void setTamanho(NoCaixa aux) {
 		
 		this.tamanho = 0;
 		

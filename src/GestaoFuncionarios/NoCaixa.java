@@ -1,14 +1,14 @@
 package GestaoFuncionarios;
 
-import Modelos.GerenteNegocios;
+import Modelos.Caixa;
 
-public class NoGerenteNegocios {
+public class NoCaixa {
 
-	NoGerenteNegocios anterior;
-	GerenteNegocios atual;
-	NoGerenteNegocios proximo;
+	NoCaixa anterior;
+	Caixa atual;
+	NoCaixa proximo;
 
-	public NoGerenteNegocios() {
+	public NoCaixa() {
 		
 		this.anterior = null;
 		this.atual = null;
@@ -16,9 +16,9 @@ public class NoGerenteNegocios {
 		
 	}
 
-	 public void adicionar(GerenteNegocios gerente) {
+	 public void adicionar(Caixa gerente) {
 	
-		NoGerenteNegocios novo = new NoGerenteNegocios();
+		NoCaixa novo = new NoCaixa();
 		novo.atual = gerente;
 		novo.proximo = null;
 		novo.anterior = this;
@@ -26,7 +26,7 @@ public class NoGerenteNegocios {
 
 	}
 
-	public void remover(GerenteNegocios gerente) {
+	public void remover(Caixa gerente) {
 		
 		if(this.proximo != null) {
 			
