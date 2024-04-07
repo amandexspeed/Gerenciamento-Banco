@@ -20,7 +20,7 @@ public class No <t>{
         this.proximo = proximo;
     }
 
-    public No(T atual) {
+    public No(t atual) {
         this.atual = atual;
     }
 
