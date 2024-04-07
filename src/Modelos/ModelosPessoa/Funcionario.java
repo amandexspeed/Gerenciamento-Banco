@@ -2,7 +2,7 @@ package Modelos.ModelosPessoa;
 
 import Utilitarios.Excecao;
 
-public abstract class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa {
 	
 	int matricula;
 
@@ -11,8 +11,6 @@ public abstract class Funcionario extends Pessoa {
 		this.matricula = matricula;
 		// TODO Auto-generated constructor stub
 	}
-	
-	public abstract void atenderCliente();
 
 	public int getMatricula() {
 		return matricula;

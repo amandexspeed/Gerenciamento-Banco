@@ -7,24 +7,15 @@ public class Fila<t> {
 	No<t> fim;
 	int tamanho;
 
-	public Fila() throws Excecao {
+	public Fila(){
 	
-		t teste = null;
-
-		if(teste instanceof No ){
 			inicio = null;
 			fim = null;
 			tamanho = 0;
-		}else{
-
-			Excecao exc = new Excecao("Estancie com um parâmetro do tipo Nó");
-			throw exc;
-
-		}
 		
 	}
 
-	public Fila(No<t> inicio) throws Excecao {
+	public Fila(No<t> inicio){
 
 		this.inicio = inicio;
 		this.fim = inicio;

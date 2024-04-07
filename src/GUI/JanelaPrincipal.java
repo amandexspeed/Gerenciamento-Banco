@@ -13,7 +13,7 @@ public class JanelaPrincipal extends JFrame{
     private CardLayout cardLayout;
 
     public JanelaPrincipal() {
-        setTitle("SysAgroTech");
+        setTitle("Banco");
         setSize(1280, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -28,7 +28,7 @@ public class JanelaPrincipal extends JFrame{
         conteudoPainel.add(telaPrincipal, "telaPrincipal");
         conteudoPainel.add(telaCadastro, "telaCadastro");
         
-        telaPrincipal.getBotaoCadastrar().addActionListener(new ActionListener() {
+        telaPrincipal.getBotaoRH().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(conteudoPainel, "telaCadastro");
             }
