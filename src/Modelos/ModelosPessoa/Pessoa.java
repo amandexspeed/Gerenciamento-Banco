@@ -1,9 +1,9 @@
-package Modelos;
+package Modelos.ModelosPessoa;
 
 import Utilitarios.Excecao;
 import Utilitarios.Regex;
 
-public abstract class Pessoa {
+public abstract class Pessoa{
 
 	private String nome;
 	private String CPF;

@@ -1,10 +1,10 @@
-package Modelos;
+package Modelos.ModelosPessoa;
 
 import Utilitarios.Excecao;
 
-public class Caixa extends Funcionario {
+public class GerenteNegocios extends Funcionario {
 
-	public Caixa(String nome, String CPF, int matricula) throws Excecao {
+	public GerenteNegocios(String nome, String CPF, int matricula) throws Excecao {
 		super(nome, CPF, matricula);
 		// TODO Auto-generated constructor stub
 	}
