@@ -14,4 +14,12 @@ public abstract class Funcionario extends Pessoa {
 	
 	public abstract void atenderCliente();
 
+	public int getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
 }
