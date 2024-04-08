@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +20,11 @@ public class TelaPrincipal extends JPanel {
         setSize(1280, 720);
         setLayout(null);
         setBackground(Color.WHITE);
+        
+        ImageIcon logo = new ImageIcon(getClass().getResource("logo.png"));
+        JLabel lblLogo = new JLabel(logo);
+        lblLogo.setBounds(0, 8, 1280, 199);
+        add(lblLogo);
         
         botaoCaixa = new JButton("Caixa");
         botaoCaixa.setFont(new Font("Tahoma", Font.BOLD, 24));

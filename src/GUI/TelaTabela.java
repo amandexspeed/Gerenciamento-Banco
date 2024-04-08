@@ -6,6 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Modelos.ModeloLista.Lista;
+import Modelos.ModeloLista.No;
 import Modelos.ModelosPessoa.Caixa;
 import Modelos.ModelosPessoa.GerenteNegocios;
 import RH.GestaoFuncionarios;
@@ -21,16 +22,22 @@ public class TelaTabela extends JPanel {
     private JButton botaoVoltar;
 
     public TelaTabela() throws Excecao {
-        setPreferredSize(new Dimension(1280, 720));
-        setLayout(new BorderLayout());
+
+        JPanel tabelaPanel = new JPanel(new GridLayout(1, 2));
+        tabelaPanel.removeAll(); // Remove todos os componentes do JPanel
 
         caixaTable = new JTable();
         gerenteTable = new JTable();
 
         JScrollPane caixaScrollPane = new JScrollPane(caixaTable);
-        JScrollPane gerenteScrollPane = new JScrollPane(gerenteTable);
+        JScrollPane gerenteScrollPane = new JScrollPane(gerenteTable);  
 
-        JPanel tabelaPanel = new JPanel(new GridLayout(1, 2));
+        preencherTabelas();
+
+        setPreferredSize(new Dimension(1280, 720));
+        setLayout(new BorderLayout());
+
+        
         tabelaPanel.add(caixaScrollPane);
         tabelaPanel.add(gerenteScrollPane);
 
@@ -42,6 +49,10 @@ public class TelaTabela extends JPanel {
     }
 
     public static void preencherTabelas() throws Excecao {
+
+        caixaTable.removeAll();
+        gerenteTable.removeAll();
+
         Lista<Caixa> funcionariosCaixa = GestaoFuncionarios.ListaCaixa;
         Lista<GerenteNegocios> funcionariosGerente = GestaoFuncionarios.ListaGerente;
 
@@ -56,13 +67,17 @@ public class TelaTabela extends JPanel {
         gerenteModel.addColumn("CPF");
         gerenteModel.addColumn("Matrícula");
 
-        for (int i = 0; i < funcionariosCaixa.getTamanho(); i++) {
-            Caixa funcionario = funcionariosCaixa.getElemento(i);
-            caixaModel.addRow(new Object[]{funcionario.getNome(), funcionario.getCPF(), funcionario.getMatricula()});
+        No<Caixa> caixa = GestaoFuncionarios.ListaCaixa.listar();
+        System.out.print("Caixa: "+caixa);
+        while (caixa != null) {
+            caixaModel.addRow(new Object[]{caixa.getAtual().getNome(), caixa.getAtual().getCPF(), caixa.getAtual().getMatricula()});
+            caixa = caixa.getProximo();
         }
-        for (int i = 0; i < funcionariosGerente.getTamanho(); i++) {
-            GerenteNegocios funcionario = funcionariosGerente.getElemento(i);
-            gerenteModel.addRow(new Object[]{funcionario.getNome(), funcionario.getCPF(), funcionario.getMatricula()});
+
+        No<GerenteNegocios> gerente = GestaoFuncionarios.ListaGerente.listar();
+        while (gerente != null) {
+            gerenteModel.addRow(new Object[]{gerente.getAtual().getNome(), gerente.getAtual().getCPF(), gerente.getAtual().getMatricula()});
+            gerente = gerente.getProximo();
         }
 
         caixaTable.setModel(caixaModel);

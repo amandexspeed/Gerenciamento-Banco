@@ -1,4 +1,6 @@
 package Modelos.ModeloLista;
+import GUI.ExcecaoPainel;
+import Modelos.ModelosPessoa.Funcionario;
 import Utilitarios.Excecao;
 
 public class Fila<t> {
@@ -49,14 +51,98 @@ public class Fila<t> {
 	}
 
 
-	public void listar(){
+	public No<t> buscar(t Valor){
 
 		No<t> aux = this.inicio;
 
 		while(aux != null) {
 
-			System.out.println(aux.atual);
+			if(aux.atual == Valor) {
+
+				System.out.println("Valor encontrado");
+				return aux;
+
+			}
+
 			aux = aux.proximo;
+
+		}
+
+		ExcecaoPainel.exibirExcecao("Valor não encontrado");
+		return null;
+
+	}
+
+	public No<t> buscar(int valor){
+
+		No<t> aux = this.inicio;
+
+		while(aux != null) {
+
+			Funcionario func = (Funcionario) aux.atual;
+
+			if(func.getMatricula() == valor) {
+
+				System.out.println("Valor encontrado");
+				return aux;
+
+			}
+
+			aux = aux.proximo;
+
+		}
+
+		ExcecaoPainel.exibirExcecao("Valor não encontrado");
+		return null;
+
+	}
+
+	public No<t> listar(No<t> no){
+
+		System.out.println("No: "+ no);
+
+		if(no.proximo != null) {
+
+			no = no.proximo;
+			listar(no);
+			return no;
+		}else{
+
+			return no;
+
+		}
+
+		
+
+	}
+
+
+	public No<t> listar(){
+
+		No<t> no = this.inicio;
+		System.out.println("No: "+ no);
+		if(no!=null)
+			if(no.proximo != null) {
+				listar(no);
+				return no;
+			}else{
+
+				return no;
+
+			}
+		return null;
+
+	}
+
+	public boolean vazia() {
+
+		if(this.inicio == null) {
+
+			return true;
+
+		}else{
+
+			return false;
 
 		}
 

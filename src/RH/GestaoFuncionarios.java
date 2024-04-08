@@ -16,7 +16,7 @@ public class GestaoFuncionarios {
     public static Lista<GerenteNegocios> ListaGerente;
     public static Lista<Lista> ListaDepartamento;
 
-    static void iniciarLista() {
+    public static void iniciarLista(){
 
         try {
             ListaCaixa = new Lista<Caixa>();
@@ -34,17 +34,42 @@ public class GestaoFuncionarios {
 
         List<Funcionario> caixas = new ArrayList<Funcionario>();
         caixas = GerenciarArquivos.lerArquivo("caixa");
-        
         for (Funcionario funcionario : caixas) {
-            ListaCaixa.inserirInicio((Caixa)funcionario);
+            Caixa caixa;
+            try {
+                caixa = new Caixa(funcionario.getNome(), funcionario.getCPF(),funcionario.getMatricula());
+                ListaCaixa.inserirInicio(caixa);
+            } catch (Excecao e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
 
         List<Funcionario> gerentes = new ArrayList<Funcionario>();
         gerentes = GerenciarArquivos.lerArquivo("gerentes");
 
         for (Funcionario funcionario : gerentes) {
-            ListaGerente.inserirInicio((GerenteNegocios)funcionario);
+            System.out.println(funcionario);
+            System.out.println(funcionario instanceof Funcionario);
+           
+            GerenteNegocios gerente;
+            try {
+                gerente = new GerenteNegocios(funcionario.getNome(), funcionario.getCPF(),funcionario.getMatricula());
+                
+                ListaGerente.inserirInicio(gerente);
+            } catch (Excecao e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }    
+            
         }
+
+        try {
+            ListaDepartamento = new Lista<Lista>();
+        } catch (Excecao e) {
+            ExcecaoPainel.exibirExcecao(e.getMessage());
+        }
+
         ListaDepartamento.inserirInicio(ListaCaixa);
         ListaDepartamento.inserirInicio(ListaGerente);
 

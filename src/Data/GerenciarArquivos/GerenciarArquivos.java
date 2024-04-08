@@ -31,16 +31,18 @@ public class GerenciarArquivos {
 	    }
 
     public static List<Funcionario> lerArquivo(String tipoFunc) {
-        try (FileReader fr = new FileReader("Data/Arquivos/"+tipoFunc+".txt");
+        try (FileReader fr = new FileReader("src/Data/Arquivos/"+tipoFunc+".txt");
              BufferedReader reader = new BufferedReader(fr)) {
 
             String linha;
             List<Funcionario> funcionarios = new ArrayList();
             while ((linha = reader.readLine()) != null) {
-                String[] dados = linha.split(", ");
+                String[] dados = linha.split(",");
                 String nome = dados[0];
                 String cpf = dados[1];
                 int matricula = Integer.parseInt(dados[2]);
+
+                System.out.println(nome+" "+cpf+" "+matricula);
 
                 try {
                     Funcionario func = new Funcionario(nome, cpf, matricula);

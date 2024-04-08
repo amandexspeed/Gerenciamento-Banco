@@ -78,4 +78,27 @@ public class No <t>{
 		
 	}
 
+	public No<T> getAnterior() {
+		return anterior;
+	}
+
+	public void setAnterior(No<T> anterior) {
+		this.anterior = anterior;
+	}
+
+	public T getAtual() {
+		return atual;
+	}
+
+	public void setAtual(T atual) {
+		this.atual = atual;
+	}
+
+	public No<T> getProximo() {
+		return proximo;
+	}
+
+	public void setProximo(No<T> proximo) {
+		this.proximo = proximo;
+	}
 }
