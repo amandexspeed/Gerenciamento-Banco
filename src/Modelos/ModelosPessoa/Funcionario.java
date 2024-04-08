@@ -23,7 +23,6 @@ public class Funcionario extends Pessoa implements IAtenderCliente {
 
 	@Override
 	public void atenderCliente() {
-		// TODO Auto-generated method stub
 		
 	}
 
