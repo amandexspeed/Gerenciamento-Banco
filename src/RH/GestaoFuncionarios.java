@@ -21,14 +21,12 @@ public class GestaoFuncionarios {
         try {
             ListaCaixa = new Lista<Caixa>();
         } catch (Excecao e) {
-            // TODO Auto-generated catch block
             ExcecaoPainel.exibirExcecao(e.getMessage());
         }
 
         try {
             ListaGerente = new Lista<GerenteNegocios>();
         } catch (Excecao e) {
-            // TODO Auto-generated catch block
             ExcecaoPainel.exibirExcecao(e.getMessage());
         }
 
@@ -81,7 +79,6 @@ public class GestaoFuncionarios {
         try {
             Lista<Lista> aux = new Lista<Lista>();
         } catch (Excecao e) {
-            // TODO Auto-generated catch block
             ExcecaoPainel.exibirExcecao(e.getMessage());
         }
 

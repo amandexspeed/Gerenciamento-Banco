@@ -4,9 +4,15 @@ import Utilitarios.Excecao;
 
 public class Cliente extends Pessoa {
 
-	public Cliente(String nome, String CPF) throws Excecao {
+	private boolean prioridade;
+
+	public Cliente(String nome, String CPF, boolean prioridade) throws Excecao {
 		super(nome, CPF);
-		// TODO Auto-generated constructor stub
+		this.prioridade = prioridade;
+		
 	}
 
+	public boolean isPrioridade() {
+		return prioridade;
+	}
 }

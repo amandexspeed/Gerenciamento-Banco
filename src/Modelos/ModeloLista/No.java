@@ -1,32 +1,30 @@
 package Modelos.ModeloLista;
 
-public class No <t>{
+public class No<T> {
 
-    No<t> anterior;
-	t atual;
-	No<t> proximo;
+	public No<T> anterior;
+	public T atual;
+	public No<T> proximo;
 
 	public No() {
-		
 		this.anterior = null;
 		this.atual = null;
 		this.proximo = null;
-		
 	}
 
-    public No(No<t> anterior, t atual, No<t> proximo) {
-        this.anterior = anterior;
-        this.atual = atual;
-        this.proximo = proximo;
-    }
+	public No(No<T> anterior, T atual, No<T> proximo) {
+		this.anterior = anterior;
+		this.atual = atual;
+		this.proximo = proximo;
+	}
 
-    public No(t atual) {
-        this.atual = atual;
-    }
+	public No(T atual) {
+		this.atual = atual;
+	}
 
-	public void adicionar(t no) {
-	
-		No<t> novo = new No<t>();
+	public void adicionar(T no) {
+
+		No<T> novo = new No<T>();
 		novo.atual = no;
 		novo.proximo = null;
 		novo.anterior = this;
@@ -34,9 +32,9 @@ public class No <t>{
 
 	}
 
-	public void adicionarMeio(t no) {
-	
-		No<t> novo = new No<t>();
+	public void adicionarMeio(T no) {
+
+		No<T> novo = new No<T>();
 		novo.atual = no;
 		novo.proximo = this.proximo;
 		novo.anterior = this;
@@ -44,9 +42,9 @@ public class No <t>{
 
 	}
 
-	public void adicionarInicio(t no) {
+	public void adicionarInicio(T no) {
 
-		No<t> novo = new No<t>();
+		No<T> novo = new No<T>();
 		novo.atual = no;
 		novo.proximo = this;
 		novo.anterior = null;
@@ -55,27 +53,16 @@ public class No <t>{
 	}
 
 	public void remover() {
-		
-		if(this.proximo != null) {
-			
+		if (this.proximo != null) {
 			this.anterior.proximo = this.proximo;
-			
-		}else {
-
+		} else {
 			this.anterior.proximo = null;
-
 		}
-		
-		if(this.anterior != null) {
 
+		if (this.anterior != null) {
 			this.proximo.anterior = this.anterior;
-
-		}else {
-
+		} else {
 			this.proximo.anterior = null;
-
 		}
-		
 	}
-
 }

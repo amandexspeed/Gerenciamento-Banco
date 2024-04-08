@@ -99,8 +99,4 @@ public class Lista<t> extends Fila<t> {
 		this.tamanho--;
 
 	} 
-
-	
-
 }
-

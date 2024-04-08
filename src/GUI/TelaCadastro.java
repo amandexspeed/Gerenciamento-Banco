@@ -10,7 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 import Data.GerenciarArquivos.GerenciarArquivos;
-import Modelos.ModeloLista.*;
 import Modelos.ModelosPessoa.*;
 import RH.GestaoFuncionarios;
 import Utilitarios.Excecao;

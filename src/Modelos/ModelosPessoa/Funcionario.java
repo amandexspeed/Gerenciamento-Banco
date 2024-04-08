@@ -9,7 +9,6 @@ public class Funcionario extends Pessoa {
 	public Funcionario(String nome, String CPF,int matricula) throws Excecao {
 		super(nome, CPF);
 		this.matricula = matricula;
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getMatricula() {

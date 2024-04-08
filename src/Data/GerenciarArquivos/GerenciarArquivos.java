@@ -35,7 +35,7 @@ public class GerenciarArquivos {
              BufferedReader reader = new BufferedReader(fr)) {
 
             String linha;
-            List<Funcionario> funcionarios = new ArrayList();
+            List<Funcionario> funcionarios = new ArrayList<Funcionario>();
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(", ");
                 String nome = dados[0];
@@ -47,7 +47,6 @@ public class GerenciarArquivos {
                     funcionarios.add(func);
                     
                 } catch (Excecao e) {
-                    // TODO Auto-generated catch block
                     ExcecaoPainel.exibirExcecao(e.getMessage());
                 }
 

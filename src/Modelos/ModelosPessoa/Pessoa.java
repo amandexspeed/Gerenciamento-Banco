@@ -38,7 +38,6 @@ public abstract class Pessoa{
 
 	public String getCPF() {
 		return CPF;
-		
 	}
 
 	public void setCPF(String CPF) throws Excecao {
