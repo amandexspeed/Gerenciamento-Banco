@@ -2,7 +2,7 @@ package Modelos.ModelosPessoa;
 
 import Utilitarios.Excecao;
 
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements IAtenderCliente {
 	
 	int matricula;
 
@@ -17,6 +17,14 @@ public class Funcionario extends Pessoa {
 
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
+	}
+	
+	
+
+	@Override
+	public void atenderCliente() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

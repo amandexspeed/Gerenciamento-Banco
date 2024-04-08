@@ -27,44 +27,24 @@ public class No<T> {
 		No<T> novo = new No<T>();
 		novo.atual = no;
 		novo.proximo = null;
-		novo.anterior = this;
-		this.proximo = novo;
-
-	}
-
-	public void adicionarMeio(T no) {
-
-		No<T> novo = new No<T>();
-		novo.atual = no;
-		novo.proximo = this.proximo;
-		novo.anterior = this;
-		this.proximo = novo;
-
-	}
-
-	public void adicionarInicio(T no) {
-
-		No<T> novo = new No<T>();
-		novo.atual = no;
-		novo.proximo = this;
 		novo.anterior = null;
-		this.anterior = novo;
+		this.proximo = novo;
 
 	}
 
 	public void remover() {
 		if (this.proximo != null) {
-			this.anterior.proximo = this.proximo;
-		} else {
-			this.anterior.proximo = null;
-		}
-
-		if (this.anterior != null) {
-			this.proximo.anterior = this.anterior;
-		} else {
+			if (this.anterior != null) {
+				this.proximo.anterior = this.anterior;
+			} else {
 			this.proximo.anterior = null;
-		}
+			}
+
+		}else if(this.anterior != null) {
+				this.anterior.proximo = null;
+			}
 	}
+
 
 	public No<T> getAnterior() {
 		return anterior;

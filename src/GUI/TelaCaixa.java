@@ -12,9 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.table.DefaultTableModel;
 
 import Caixa.EscolhaFunc;
+import Modelos.ModeloLista.Lista;
+import Modelos.ModeloLista.No;
+import Modelos.ModelosPessoa.Caixa;
+import Modelos.ModelosPessoa.GerenteNegocios;
+import RH.GestaoFuncionarios;
 import Utilitarios.Excecao;
 
 import java.awt.GridLayout;
@@ -24,6 +29,7 @@ public class TelaCaixa extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNome;
 	private JButton botaoVoltar;
+    private JButton botaoEntrar;
 	private static JTable caixaTable;
     private static JTable gerenteTable;
     
@@ -52,10 +58,11 @@ public class TelaCaixa extends JPanel {
         botaoVoltar.setBounds(678, 588, 124, 57);
         add(botaoVoltar);
         
-        JButton botaoEntrar = new JButton("Entrar");
+        botaoEntrar = new JButton("Entrar");
         botaoEntrar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		EscolhaFunc.escolherFuncionario(Integer.parseInt(lblNome.getText()));
+        		EscolhaFunc.escolherFuncionario(Integer.parseInt(campoNome.getText()));
+                TelaAtendimento.mudarTexto();
         	}
         });
         botaoEntrar.setBounds(527, 588, 124, 57);
@@ -75,12 +82,9 @@ public class TelaCaixa extends JPanel {
         JScrollPane caixaScrollPane = new JScrollPane(caixaTable);
         JScrollPane gerenteScrollPane = new JScrollPane(gerenteTable); 
         
-        
-
-        
-        
+  
         try {
-			TelaTabela.preencherTabelas();
+			preencherTabelas();
 		} catch (Excecao e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -97,4 +101,42 @@ public class TelaCaixa extends JPanel {
     public JButton getBotaoVoltar() {
     	return botaoVoltar;
     }
+
+    public JButton getBotaoEntrar(){
+        return botaoEntrar;
+    }
+    public static void preencherTabelas() throws Excecao {
+
+		caixaTable.removeAll();
+		gerenteTable.removeAll();
+
+		Lista<Caixa> funcionariosCaixa = GestaoFuncionarios.ListaCaixa;
+		Lista<GerenteNegocios> funcionariosGerente = GestaoFuncionarios.ListaGerente;
+
+		DefaultTableModel caixaModel = new DefaultTableModel();
+		DefaultTableModel gerenteModel = new DefaultTableModel();
+
+		caixaModel.addColumn("Nome");
+		caixaModel.addColumn("CPF");
+		caixaModel.addColumn("Matrícula");
+
+		gerenteModel.addColumn("Nome");
+		gerenteModel.addColumn("CPF");
+		gerenteModel.addColumn("Matrícula");
+
+		No<Caixa> caixa = GestaoFuncionarios.ListaCaixa.listar();
+		while (caixa != null) {
+			caixaModel.addRow(new Object[]{caixa.getAtual().getNome(), caixa.getAtual().getCPF(), caixa.getAtual().getMatricula()});
+			caixa = caixa.getProximo();
+		}
+
+		No<GerenteNegocios> gerente = GestaoFuncionarios.ListaGerente.listar();
+		while (gerente != null) {
+			gerenteModel.addRow(new Object[]{gerente.getAtual().getNome(), gerente.getAtual().getCPF(), gerente.getAtual().getMatricula()});
+			gerente = gerente.getProximo();
+		}
+
+		caixaTable.setModel(caixaModel);
+		gerenteTable.setModel(gerenteModel);
+	}
 }

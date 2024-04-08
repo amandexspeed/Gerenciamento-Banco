@@ -37,12 +37,35 @@ public class Fila<t> {
 			this.fim = novo;
 
 		}
+		
 		this.tamanho++;
+	}
+
+	public void inserirFim(t valor) throws Excecao {
+
+		No<t> novo = new No<t>(valor);
+
+		if (this.inicio == null) {
+
+			this.inicio = novo;
+			this.fim = novo;
+
+		} else {
+
+			novo.anterior = this.fim;
+			this.fim.proximo = novo;
+			this.fim = novo;
+
+		}
+		this.tamanho++;
+
 	}
 
 	public void removerInicio() {
 
-		this.inicio.remover();
+		No<t> aux = this.inicio;
+		this.inicio = this.inicio.proximo;
+		aux.remover();
 		this.tamanho--;
 
 	}
@@ -56,7 +79,6 @@ public class Fila<t> {
 
 			if(aux.atual == Valor) {
 
-				System.out.println("Valor encontrado");
 				return aux;
 
 			}
@@ -65,7 +87,6 @@ public class Fila<t> {
 
 		}
 
-		ExcecaoPainel.exibirExcecao("Valor não encontrado");
 		return null;
 
 	}
@@ -80,7 +101,6 @@ public class Fila<t> {
 
 			if(func.getMatricula() == valor) {
 
-				System.out.println("Valor encontrado");
 				return aux;
 
 			}
@@ -89,14 +109,11 @@ public class Fila<t> {
 
 		}
 
-		ExcecaoPainel.exibirExcecao("Valor não encontrado");
 		return null;
 
 	}
 
 	public No<t> listar(No<t> no){
-
-		System.out.println("No: "+ no);
 
 		if(no.proximo != null) {
 
@@ -109,7 +126,6 @@ public class Fila<t> {
 
 		}
 
-		
 
 	}
 
@@ -117,7 +133,6 @@ public class Fila<t> {
 	public No<t> listar(){
 
 		No<t> no = this.inicio;
-		System.out.println("No: "+ no);
 		if(no!=null)
 			if(no.proximo != null) {
 				listar(no);

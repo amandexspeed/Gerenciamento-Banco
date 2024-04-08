@@ -62,4 +62,10 @@ public class TelaPrincipal extends JPanel {
     	return botaoCaixa;
     	
     }
+
+    public JButton getBotaoRecepcao() {
+    	
+    	return botaoRecepcao;
+    	
+    }
 }

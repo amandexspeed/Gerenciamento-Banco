@@ -28,11 +28,18 @@ public class JanelaPrincipal extends JFrame{
         TelaTabela telaTabela = new TelaTabela();
         TelaRH telaRH = new TelaRH();
         TelaCaixa telaCaixa = new TelaCaixa();
+        TelaExcluir telaExcluir = new TelaExcluir();
+        TelaAtendimento telaAtendimento = new TelaAtendimento();
+        TelaCadastrarCliente telaCadastrarCliente = new TelaCadastrarCliente();
         
         conteudoPainel.add(telaPrincipal, "telaPrincipal");
         conteudoPainel.add(telaCadastro, "telaCadastro");
         conteudoPainel.add(telaTabela, "telaTabela");
         conteudoPainel.add(telaRH, "telaRH");
+        conteudoPainel.add(telaCaixa, "telaCaixa");
+        conteudoPainel.add(telaExcluir,"telaExcluir");
+        conteudoPainel.add(telaAtendimento,"telaAtendimento");
+        conteudoPainel.add(telaCadastrarCliente, "telaCadastrarCliente");
         
         telaPrincipal.getBotaoRH().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -43,6 +50,12 @@ public class JanelaPrincipal extends JFrame{
         telaPrincipal.getBotaoCaixa().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(conteudoPainel, "telaCaixa");
+            }
+        });
+
+        telaPrincipal.getBotaoRecepcao().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaCadastrarCliente");
             }
         });
         
@@ -81,6 +94,39 @@ public class JanelaPrincipal extends JFrame{
                 cardLayout.show(conteudoPainel, "telaPrincipal");
             }
         });
+        
+        telaRH.getBotaoExcluir().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaExcluir");
+            }
+        });
+        
+        telaExcluir.getBotaoVoltar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaRH");
+            }
+        });
+        
+        telaAtendimento.getBotaoVoltar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaPrincipal");
+            }
+        });
+
+        telaCaixa.getBotaoEntrar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaAtendimento");
+            }
+        });
+
+        telaCadastrarCliente.getBotaoVoltar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaPrincipal");
+            }
+        });
+
+
+
     }
 
     public JPanel getConteudoPainel() {

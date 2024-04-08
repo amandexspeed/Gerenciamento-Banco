@@ -17,18 +17,6 @@ public class Lista<t> extends Fila<t> {
 
 	}
 
-	/* public void inserirFim(t info){
-
-
-		No<t> novo = new No<t>();
-		novo.atual = info;
-		novo.proximo = null;
-		novo.anterior = this.fim;
-		this.fim.proximo = novo;
-		this.fim = novo;
-
-	} */
-
 	public void inserirInicio(t info){
 
 		No<t> novo = new No<t>();
@@ -65,9 +53,12 @@ public class Lista<t> extends Fila<t> {
 
 			}
 
-			aux.adicionarMeio(info);
+			aux.adicionar(info);
+			aux.anterior.proximo = aux;
+			aux.proximo.anterior = aux;
 
 		}
+		this.tamanho++;
 
 	}
 
@@ -90,7 +81,7 @@ public class Lista<t> extends Fila<t> {
 
 	}
 
-	public void remover(int posicao){
+	public void removerPos(int posicao){
 
 		No<t> aux = this.inicio;
 
@@ -104,4 +95,22 @@ public class Lista<t> extends Fila<t> {
 		this.tamanho--;
 
 	} 
+
+	public void remover(int matricula){
+
+		No<t> aux = this.inicio;
+
+		while(aux != null) {
+
+			if(aux.atual.equals(matricula)) {
+
+				aux.remover();
+				this.tamanho--;
+
+			}
+
+			aux = aux.proximo;
+
+		}
+	}
 }

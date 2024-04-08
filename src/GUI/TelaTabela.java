@@ -53,9 +53,6 @@ public class TelaTabela extends JPanel {
         caixaTable.removeAll();
         gerenteTable.removeAll();
 
-        Lista<Caixa> funcionariosCaixa = GestaoFuncionarios.ListaCaixa;
-        Lista<GerenteNegocios> funcionariosGerente = GestaoFuncionarios.ListaGerente;
-
         DefaultTableModel caixaModel = new DefaultTableModel();
         DefaultTableModel gerenteModel = new DefaultTableModel();
 
@@ -68,7 +65,6 @@ public class TelaTabela extends JPanel {
         gerenteModel.addColumn("Matrícula");
 
         No<Caixa> caixa = GestaoFuncionarios.ListaCaixa.listar();
-        System.out.print("Caixa: "+caixa);
         while (caixa != null) {
             caixaModel.addRow(new Object[]{caixa.getAtual().getNome(), caixa.getAtual().getCPF(), caixa.getAtual().getMatricula()});
             caixa = caixa.getProximo();

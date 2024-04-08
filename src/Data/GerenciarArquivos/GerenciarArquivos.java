@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import java.io.File;
 import GUI.ExcecaoPainel;
 import Modelos.ModelosPessoa.Funcionario;
@@ -23,7 +26,7 @@ public class GerenciarArquivos {
 	            if (objeto instanceof Funcionario) {
 	                writer.println(objeto.getNome() + "," + objeto.getCPF() + "," + objeto.getMatricula());
 	            } else {
-	            	System.out.println("Tipo de objeto não suportado.");
+	            	JOptionPane.showMessageDialog(null,"Tipo de objeto não suportado.");
 	            }
 	        } catch (IOException e) {
 	            ExcecaoPainel.exibirExcecao("Erro ao escrever no arquivo: " + e.getMessage());
@@ -42,8 +45,6 @@ public class GerenciarArquivos {
                 String cpf = dados[1];
                 int matricula = Integer.parseInt(dados[2]);
 
-                System.out.println(nome+" "+cpf+" "+matricula);
-
                 try {
                     Funcionario func = new Funcionario(nome, cpf, matricula);
                     funcionarios.add(func);
@@ -55,11 +56,38 @@ public class GerenciarArquivos {
             }
             return funcionarios;
         } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Erro ao ler o arquivo: " + e.getMessage());
         }
         catch (NumberFormatException e) {
-            System.err.println("Erro ao converter a matrícula para inteiro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Erro ao converter a matrícula para inteiro: " + e.getMessage());
         }
         return null;
     }
-}	
+
+    public static void removerFuncionario(String tipoFunc, int matricula) {
+
+        List<Funcionario> funcionarios = lerArquivo(tipoFunc);
+
+        try (FileWriter fw = new FileWriter("src/Data/Arquivos/"+tipoFunc+".txt", false);
+             PrintWriter writer = new PrintWriter(fw)) {
+
+                for(Funcionario func:funcionarios){
+
+                    if(func.getMatricula() != matricula){
+
+                        writer.println(func.getNome() +","+func.getCPF()+ ","+func.getMatricula());
+
+                    }
+
+                }
+
+        }catch (IOException e) {
+            ExcecaoPainel.exibirExcecao("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+
+                
+            
+    }
+}
+
+	

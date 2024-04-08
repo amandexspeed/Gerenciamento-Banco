@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import Data.GerenciarArquivos.GerenciarArquivos;
 import Modelos.ModelosPessoa.*;
 import RH.GestaoFuncionarios;
+import Recepcao.GerenciarFila;
 import Utilitarios.Excecao;
 
 import javax.swing.JButton;
@@ -19,16 +20,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import javax.swing.JToggleButton;
 
-public class TelaCadastro extends JPanel {
+public class TelaCadastrarCliente extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNome;
 	private JTextField campoCPF;
-	private JTextField campoMatricula;
 	private JButton botaoVoltar;
+	private Boolean prioridade = false;
 
-    public TelaCadastro() {
+    public TelaCadastrarCliente() {
         setSize(1280, 720);
         setBackground(Color.WHITE);
         setLayout(null);
@@ -38,8 +40,9 @@ public class TelaCadastro extends JPanel {
         titulo.setFont(new Font("Tahoma", Font.ITALIC, 44));
         add(titulo);
         
-        String[] opcoes = {"Caixa", "Gerente de Negócios"};
+        String[] opcoes = {"Caixa", "Gerente"};
         JComboBox<String> comboBox = new JComboBox<>(opcoes);
+        comboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
         comboBox.setBounds(607, 192, 118, 20);
         add(comboBox);
         
@@ -73,57 +76,77 @@ public class TelaCadastro extends JPanel {
             }
         });
   
-        JLabel lblMatricula = new JLabel("Matrícula");
-        lblMatricula.setFont(new Font("Tahoma", Font.BOLD, 24));
-        lblMatricula.setBounds(564, 391, 118, 32);
-        add(lblMatricula);
-        
-        campoMatricula = new JTextField();
-        campoMatricula.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        campoMatricula.setColumns(10);
-        campoMatricula.setBounds(564, 434, 200, 30);
-        add(campoMatricula);
+        JLabel lblPrioridade = new JLabel("Tem prioridade?");
+        lblPrioridade.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblPrioridade.setBounds(564, 391, 200, 32);
+        add(lblPrioridade);
         
         botaoVoltar = new JButton("Voltar");
         botaoVoltar.setBounds(607, 579, 124, 57);
         add(botaoVoltar);
         
         JButton botaoCadastrar = new JButton("Cadastrar");
+        botaoCadastrar.setBounds(607, 496, 124, 57);
+        add(botaoCadastrar);
+        
+        JToggleButton botaoSim = new JToggleButton("Sim");  
+        botaoSim.setFont(new Font("Tahoma", Font.BOLD, 16));
+        botaoSim.setBounds(545, 446, 115, 21);
+        add(botaoSim);
+
+        JToggleButton botaoNao = new JToggleButton("Não");
+        botaoNao.setFont(new Font("Tahoma", Font.BOLD, 16));
+        botaoNao.setBounds(692, 446, 115, 21);
+        add(botaoNao);
+        
+        botaoSim.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		prioridade = true;
+                botaoSim.setEnabled(false);
+                botaoNao.setEnabled(true);
+        	}
+        });
+        
+        botaoNao.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		prioridade = false;
+                botaoSim.setEnabled(true);
+                botaoNao.setEnabled(false);
+        	}
+        });
+
         botaoCadastrar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+
         		String escolha = (String) comboBox.getSelectedItem();
 				
-				if (escolha.equals("Caixa")) {	            
-		            try {
-		            	Caixa caixa = new Caixa(campoNome.getText(), campoCPF.getText(), Integer.parseInt(campoMatricula.getText()));
-		                GerenciarArquivos.escreverArquivo(caixa, "caixa");
-		                JOptionPane.showMessageDialog(null, "Caixa cadastrado com sucesso!");
-                        GestaoFuncionarios.ListaCaixa.inserirInicio(caixa);
-		            } catch (Excecao ex) {
-		                ex.printStackTrace();
-		            }
-		        } else if (escolha.equals("Gerente de Negócios")) {            
-		            try {
-		            	GerenteNegocios gerente = new GerenteNegocios(campoNome.getText(), campoCPF.getText(), Integer.parseInt(campoMatricula.getText()));
-		            	GerenciarArquivos.escreverArquivo(gerente, "gerentes");	
-		            	JOptionPane.showMessageDialog(null, "Gerente de Negócios cadastrado com sucesso!");
-                        GestaoFuncionarios.ListaGerente.inserirInicio(gerente);
-                        
-		            } catch (Excecao ex) {
-		                ex.printStackTrace();
-		            }
-		        }
+                try {
+                    Cliente cliente = new Cliente(campoNome.getText(), campoCPF.getText(), prioridade);
+                    if (escolha.equals("Caixa")) {	            
+                        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso! ");
+                        if(prioridade) {
+                            GerenciarFila.filaPreferencial.inserirFim(cliente);
+                        } else {
+                            GerenciarFila.filaNormal.inserirFim(cliente);
+                            }
+                    } else {     
+                            
+                        JOptionPane.showMessageDialog(null, "Cliente VIP cadastrado com sucesso! ");
+                        GerenciarFila.filaVIP.inserirFim(cliente);
+                    }
+                } catch (Excecao e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+				
                 campoNome.setText("");
                 campoCPF.setText("");
-                campoMatricula.setText("");
-                GestaoFuncionarios.iniciarLista();
-                GestaoFuncionarios.atualizarTabelas();
+
                 
 						
         	}
         });
-        botaoCadastrar.setBounds(607, 496, 124, 57);
-        add(botaoCadastrar);
+
     }
     
     public JButton getBotaoVoltar() {

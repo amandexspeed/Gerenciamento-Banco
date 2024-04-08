@@ -14,6 +14,7 @@ public class TelaRH extends JPanel {
 	JButton botaoCadastrar;
 	JButton botaoListar;
 	JButton botaoVoltar;
+	JButton botaoExcluir;
     public TelaRH() {
         setSize(1280, 720);
         setLayout(null);
@@ -21,7 +22,7 @@ public class TelaRH extends JPanel {
         
         botaoCadastrar = new JButton("Cadastrar Funcionários");
         botaoCadastrar.setFont(new Font("Tahoma", Font.BOLD, 24));
-        botaoCadastrar.setBounds(294, 202, 314, 65);
+        botaoCadastrar.setBounds(136, 202, 314, 65);
         add(botaoCadastrar);
  
         JLabel titulo = new JLabel("Mai-ly Bank ");
@@ -31,12 +32,17 @@ public class TelaRH extends JPanel {
         
         botaoListar = new JButton("Listar Funcionários");
         botaoListar.setFont(new Font("Tahoma", Font.BOLD, 24));
-        botaoListar.setBounds(703, 202, 314, 65);
+        botaoListar.setBounds(896, 202, 314, 65);
         add(botaoListar);
         
         botaoVoltar = new JButton("Voltar");
         botaoVoltar.setBounds(596, 327, 124, 57);
         add(botaoVoltar);
+        
+        botaoExcluir = new JButton("Excluir Funcionários");
+        botaoExcluir.setFont(new Font("Tahoma", Font.BOLD, 24));
+        botaoExcluir.setBounds(515, 202, 314, 65);
+        add(botaoExcluir);
     }
     
     public JButton getBotaoCadastrar() {
@@ -50,4 +56,9 @@ public class TelaRH extends JPanel {
     public JButton getBotaoListar() {
     	return botaoListar;
     }
+    
+    public JButton getBotaoExcluir() {
+    	return botaoExcluir;
+    }
+    	
 }
