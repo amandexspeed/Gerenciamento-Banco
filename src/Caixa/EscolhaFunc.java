@@ -1,7 +1,6 @@
 package Caixa;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import Modelos.ModeloLista.*;
 import Modelos.ModelosPessoa.*;

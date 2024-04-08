@@ -15,7 +15,6 @@ public class Main {
 			telaPrincipal = new JanelaPrincipal();
 			telaPrincipal.setVisible(true);
 		} catch (Excecao e) {
-			// TODO Auto-generated catch block
 			ExcecaoPainel.exibirExcecao(e.getMessage());;
 		}
 

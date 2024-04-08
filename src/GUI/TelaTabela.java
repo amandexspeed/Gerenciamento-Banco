@@ -5,7 +5,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Modelos.ModeloLista.Lista;
 import Modelos.ModeloLista.No;
 import Modelos.ModelosPessoa.Caixa;
 import Modelos.ModelosPessoa.GerenteNegocios;

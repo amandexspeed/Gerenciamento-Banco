@@ -8,10 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Caixa.EscolhaFunc;
-import Modelos.ModeloLista.*;
-import Modelos.ModelosPessoa.Cliente;
-import Recepcao.GerenciarFila;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,8 +22,6 @@ public class TelaAtendimento extends JPanel {
         setSize(1280, 720);
         setBackground(Color.WHITE);
         setLayout(null);
-        
-        String[] opcoes = {"Caixa", "Gerente de Negócios"};
         
         campoNome = new JTextField();
         campoNome.setEditable(false);

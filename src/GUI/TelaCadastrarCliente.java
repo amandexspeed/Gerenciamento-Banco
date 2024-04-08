@@ -9,9 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import Data.GerenciarArquivos.GerenciarArquivos;
 import Modelos.ModelosPessoa.*;
-import RH.GestaoFuncionarios;
 import Recepcao.GerenciarFila;
 import Utilitarios.Excecao;
 
@@ -135,7 +133,6 @@ public class TelaCadastrarCliente extends JPanel {
                         GerenciarFila.filaVIP.inserirFim(cliente);
                     }
                 } catch (Excecao e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
 				

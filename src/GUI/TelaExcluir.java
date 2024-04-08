@@ -12,10 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-import Caixa.EscolhaFunc;
 import Modelos.ModelosPessoa.*;
 import Modelos.ModeloLista.*;
 import RH.GestaoFuncionarios;
@@ -23,7 +21,6 @@ import Utilitarios.Excecao;
 
 import java.awt.GridLayout;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class TelaExcluir extends JPanel {
 	
@@ -97,7 +94,6 @@ public class TelaExcluir extends JPanel {
 				try {
 					preencherTabelas();
 				} catch (Excecao e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 

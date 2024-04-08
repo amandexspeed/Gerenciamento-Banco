@@ -43,7 +43,7 @@ public class GestaoFuncionarios {
                 caixa = new Caixa(funcionario.getNome(), funcionario.getCPF(),funcionario.getMatricula());
                 ListaCaixa.inserirInicio(caixa);
             } catch (Excecao e) {
-                // TODO Auto-generated catch block
+                // 
                 e.printStackTrace();
             }
         }
@@ -59,7 +59,6 @@ public class GestaoFuncionarios {
                 
                 ListaGerente.inserirInicio(gerente);
             } catch (Excecao e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }    
             
@@ -109,12 +108,6 @@ public class GestaoFuncionarios {
         } catch (Excecao e) {
             ExcecaoPainel.exibirExcecao(e.getMessage());
         }
-
-        for(int i = 0; i < ListaDepartamento.getTamanho(); i++) {
-            
-
-
-        }
     }
 
     public static void removerFuncionario(String tipo, int matricula) {
@@ -134,12 +127,8 @@ public class GestaoFuncionarios {
             TelaExcluir.preencherTabelas();
             TelaCaixa.preencherTabelas();
         } catch (Excecao e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
     }
-
-
-
 }
