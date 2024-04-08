@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JPanel {
 
@@ -27,6 +29,10 @@ public class TelaPrincipal extends JPanel {
         add(lblLogo);
         
         botaoCaixa = new JButton("Caixa");
+        botaoCaixa.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         botaoCaixa.setFont(new Font("Tahoma", Font.BOLD, 24));
         botaoCaixa.setBounds(556, 202, 203, 65);
         add(botaoCaixa);
@@ -49,5 +55,11 @@ public class TelaPrincipal extends JPanel {
     
     public JButton getBotaoRH() {
     	return botaoRH;
+    }
+    
+    public JButton getBotaoCaixa() {
+    	
+    	return botaoCaixa;
+    	
     }
 }

@@ -26,6 +26,7 @@ public class TelaCaixa extends JPanel {
 	private JButton botaoVoltar;
 	private static JTable caixaTable;
     private static JTable gerenteTable;
+    
     public TelaCaixa() {
         setSize(1280, 720);
         setBackground(Color.WHITE);
@@ -72,8 +73,12 @@ public class TelaCaixa extends JPanel {
         gerenteTable = new JTable();
 
         JScrollPane caixaScrollPane = new JScrollPane(caixaTable);
-        JScrollPane gerenteScrollPane = new JScrollPane(gerenteTable);  
+        JScrollPane gerenteScrollPane = new JScrollPane(gerenteTable); 
+        
+        
 
+        
+        
         try {
 			TelaTabela.preencherTabelas();
 		} catch (Excecao e1) {

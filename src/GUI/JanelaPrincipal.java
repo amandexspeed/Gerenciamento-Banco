@@ -27,6 +27,7 @@ public class JanelaPrincipal extends JFrame{
         TelaCadastro telaCadastro = new TelaCadastro();
         TelaTabela telaTabela = new TelaTabela();
         TelaRH telaRH = new TelaRH();
+        TelaCaixa telaCaixa = new TelaCaixa();
         
         conteudoPainel.add(telaPrincipal, "telaPrincipal");
         conteudoPainel.add(telaCadastro, "telaCadastro");
@@ -36,6 +37,12 @@ public class JanelaPrincipal extends JFrame{
         telaPrincipal.getBotaoRH().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(conteudoPainel, "telaRH");
+            }
+        });
+        
+        telaPrincipal.getBotaoCaixa().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaCaixa");
             }
         });
         
@@ -64,6 +71,12 @@ public class JanelaPrincipal extends JFrame{
         });
 
         telaRH.getBotaoVoltar().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(conteudoPainel, "telaPrincipal");
+            }
+        });
+        
+        telaCaixa.getBotaoVoltar().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(conteudoPainel, "telaPrincipal");
             }
