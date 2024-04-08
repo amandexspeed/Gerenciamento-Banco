@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import Recepcao.GerenciarFila;
 import Utilitarios.Excecao;
 
-public class Caixa extends Funcionario implements IAtenderCliente {
+public class Caixa extends Funcionario{
 	
 	int contPref = 0;
 
@@ -16,19 +16,13 @@ public class Caixa extends Funcionario implements IAtenderCliente {
 	@Override
 	public void atenderCliente() {
 
-		if(GerenciarFila.filaPreferencial.getInicio() != null) {
+		if(GerenciarFila.filaPreferencial.getInicio() != null && contPref<2) {
 			
-			if(contPref<2) {
-			
-				JOptionPane.showMessageDialog(null, "Nao ha clientes na fila");
-				return;
-	
-			}else{
 				Cliente cliente = GerenciarFila.filaPreferencial.getInicio().getAtual();
 				JOptionPane.showMessageDialog(null, cliente.getNome()+" - "+cliente.getCPF());
 				GerenciarFila.filaPreferencial.removerInicio();
 				contPref++;
-			}
+
 		}else {
 			if(GerenciarFila.filaNormal.getInicio() == null) {
 			

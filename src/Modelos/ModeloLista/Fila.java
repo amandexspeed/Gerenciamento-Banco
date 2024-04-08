@@ -1,5 +1,4 @@
 package Modelos.ModeloLista;
-import GUI.ExcecaoPainel;
 import Modelos.ModelosPessoa.Funcionario;
 import Utilitarios.Excecao;
 

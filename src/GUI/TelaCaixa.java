@@ -15,7 +15,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Caixa.EscolhaFunc;
-import Modelos.ModeloLista.Lista;
 import Modelos.ModeloLista.No;
 import Modelos.ModelosPessoa.Caixa;
 import Modelos.ModelosPessoa.GerenteNegocios;
@@ -108,9 +107,6 @@ public class TelaCaixa extends JPanel {
 
 		caixaTable.removeAll();
 		gerenteTable.removeAll();
-
-		Lista<Caixa> funcionariosCaixa = GestaoFuncionarios.ListaCaixa;
-		Lista<GerenteNegocios> funcionariosGerente = GestaoFuncionarios.ListaGerente;
 
 		DefaultTableModel caixaModel = new DefaultTableModel();
 		DefaultTableModel gerenteModel = new DefaultTableModel();

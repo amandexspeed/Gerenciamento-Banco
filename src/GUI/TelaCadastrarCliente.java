@@ -9,9 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import Data.GerenciarArquivos.GerenciarArquivos;
 import Modelos.ModelosPessoa.*;
-import RH.GestaoFuncionarios;
 import Recepcao.GerenciarFila;
 import Utilitarios.Excecao;
 

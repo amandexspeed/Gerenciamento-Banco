@@ -1,7 +1,6 @@
 package Caixa;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import Modelos.ModeloLista.*;
 import Modelos.ModelosPessoa.*;
@@ -35,7 +34,8 @@ public class EscolhaFunc {
             listaDeps = listaDeps.getProximo();
 
         }
-        JOptionPane.showMessageDialog(null,"Não foi encontrada a matrícula digitada");
+        if(listaDeps==null)
+            JOptionPane.showMessageDialog(null,"Não foi encontrada a matrícula digitada");
         
 	}
 	
