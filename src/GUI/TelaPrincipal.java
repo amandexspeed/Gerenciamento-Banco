@@ -3,9 +3,12 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JPanel {
 
@@ -20,7 +23,16 @@ public class TelaPrincipal extends JPanel {
         setLayout(null);
         setBackground(Color.WHITE);
         
+        ImageIcon logo = new ImageIcon(getClass().getResource("logo.png"));
+        JLabel lblLogo = new JLabel(logo);
+        lblLogo.setBounds(0, 8, 1280, 199);
+        add(lblLogo);
+        
         botaoCaixa = new JButton("Caixa");
+        botaoCaixa.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         botaoCaixa.setFont(new Font("Tahoma", Font.BOLD, 24));
         botaoCaixa.setBounds(556, 202, 203, 65);
         add(botaoCaixa);
@@ -43,5 +55,11 @@ public class TelaPrincipal extends JPanel {
     
     public JButton getBotaoRH() {
     	return botaoRH;
+    }
+    
+    public JButton getBotaoCaixa() {
+    	
+    	return botaoCaixa;
+    	
     }
 }

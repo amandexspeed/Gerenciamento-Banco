@@ -35,8 +35,13 @@ public class Lista<t> extends Fila<t> {
 		novo.atual = info;
 		novo.proximo = this.inicio;
 		novo.anterior = null;
-		this.inicio.anterior = novo;
+		if(this.inicio != null){
+			this.inicio.anterior = novo;
+		}else{
+			this.fim = novo;
+		}
 		this.inicio = novo;
+		
 
 	}
 

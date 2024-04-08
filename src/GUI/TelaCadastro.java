@@ -27,6 +27,7 @@ public class TelaCadastro extends JPanel {
 	private JTextField campoCPF;
 	private JTextField campoMatricula;
 	private JButton botaoVoltar;
+
     public TelaCadastro() {
         setSize(1280, 720);
         setBackground(Color.WHITE);
@@ -107,10 +108,22 @@ public class TelaCadastro extends JPanel {
 		            	GerenciarArquivos.escreverArquivo(gerente, "gerentes");	
 		            	JOptionPane.showMessageDialog(null, "Gerente de Negócios cadastrado com sucesso!");
                         GestaoFuncionarios.ListaGerente.inserirInicio(gerente);
+                        
 		            } catch (Excecao ex) {
 		                ex.printStackTrace();
 		            }
 		        }
+
+                try {
+                    TelaTabela.preencherTabelas();
+                } catch (Excecao e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+
+                campoNome.setText("");
+                campoCPF.setText("");
+                campoMatricula.setText("");
 						
         	}
         });
