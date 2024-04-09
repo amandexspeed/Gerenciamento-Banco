@@ -3,7 +3,6 @@ package Modelos.ModelosPessoa;
 import Utilitarios.Excecao;
 
 public class Funcionario extends Pessoa implements IAtenderCliente {
-	
 	int matricula;
 
 	public Funcionario(String nome, String CPF,int matricula) throws Excecao {
@@ -18,12 +17,9 @@ public class Funcionario extends Pessoa implements IAtenderCliente {
 	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
-	
-	
 
 	@Override
 	public void atenderCliente() {
 		
 	}
-
 }

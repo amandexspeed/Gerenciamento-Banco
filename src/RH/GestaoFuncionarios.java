@@ -99,6 +99,16 @@ public class GestaoFuncionarios {
         }
     }
 
+    static void listarFuncionarios() {
+        ListaDepartamento.listar();
+
+        try {
+            Lista<Lista> aux = new Lista<Lista>();
+        } catch (Excecao e) {
+            ExcecaoPainel.exibirExcecao(e.getMessage());
+        }
+    }
+
     public static void removerFuncionario(String tipo, int matricula) {
         if (tipo.equals("Caixa")) {
             ListaCaixa.remover(matricula);
@@ -120,7 +130,4 @@ public class GestaoFuncionarios {
         }
 
     }
-
-
-
 }
