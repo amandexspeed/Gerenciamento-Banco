@@ -138,8 +138,8 @@ public class TelaCadastrarCliente extends JPanel {
 				
                 campoNome.setText("");
                 campoCPF.setText("");
-
-                
+                botaoSim.setEnabled(true);
+                botaoNao.setEnabled(true);
 						
         	}
         });
