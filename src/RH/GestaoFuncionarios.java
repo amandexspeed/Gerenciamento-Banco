@@ -43,7 +43,6 @@ public class GestaoFuncionarios {
                 caixa = new Caixa(funcionario.getNome(), funcionario.getCPF(),funcionario.getMatricula());
                 ListaCaixa.inserirInicio(caixa);
             } catch (Excecao e) {
-                // 
                 e.printStackTrace();
             }
         }
