@@ -34,7 +34,8 @@ public class EscolhaFunc {
             listaDeps = listaDeps.getProximo();
 
         }
-        JOptionPane.showMessageDialog(null,"Não foi encontrada a matrícula digitada");
+        if(listaDeps==null)
+            JOptionPane.showMessageDialog(null,"Não foi encontrada a matrícula digitada");
         
 	}
 	
