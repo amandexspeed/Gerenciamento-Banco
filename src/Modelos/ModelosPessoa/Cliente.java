@@ -9,7 +9,6 @@ public class Cliente extends Pessoa {
 	public Cliente(String nome, String CPF, boolean prioridade) throws Excecao {
 		super(nome, CPF);
 		this.prioridade = prioridade;
-		
 	}
 
 	public boolean isPrioridade() {

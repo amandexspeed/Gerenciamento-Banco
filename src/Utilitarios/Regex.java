@@ -4,11 +4,11 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Regex {
-	
+
 	private String padrao;
 
 	public String getPadrao() {
-		return padrao; //Precisa seguir regras do regex. Peça a IA para gerar seu padrão e divirta-se!
+		return padrao;
 	}
 
 	public void setPadrao(String padrao) {
@@ -20,17 +20,9 @@ public class Regex {
 	}
 
 	public boolean teste(String texto) {
-		
 		Pattern padraoRegex = Pattern.compile(this.padrao);
-        Matcher matcher = padraoRegex.matcher(texto);
+		Matcher matcher = padraoRegex.matcher(texto);
 
-        if (matcher.find()) {
-           return true;	//contém o padrão
-        } else {
-            return false; //Não contém o padrão especificado
-        }
-		
+		return matcher.find(); // Retorna true se encontrar o padrão no texto
 	}
-	
-
 }

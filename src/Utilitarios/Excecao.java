@@ -2,9 +2,6 @@ package Utilitarios;
 
 public class Excecao extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3991055320733077064L;
 
 	public Excecao(String message) {

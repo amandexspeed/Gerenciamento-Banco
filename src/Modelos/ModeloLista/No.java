@@ -37,14 +37,13 @@ public class No<T> {
 			if (this.anterior != null) {
 				this.proximo.anterior = this.anterior;
 			} else {
-			this.proximo.anterior = null;
+				this.proximo.anterior = null;
 			}
 
-		}else if(this.anterior != null) {
-				this.anterior.proximo = null;
-			}
+		} else if (this.anterior != null) {
+			this.anterior.proximo = null;
+		}
 	}
-
 
 	public No<T> getAnterior() {
 		return anterior;

@@ -34,16 +34,7 @@ public class Fila<T> {
 
 	public void inserirFim(T valor) throws Excecao {
 		No<T> novo = new No<T>(valor);
-
-		if (this.inicio == null) {
-			this.inicio = novo;
-			this.fim = novo;
-		} else {
-			novo.anterior = this.fim;
-			this.fim.proximo = novo;
-			this.fim = novo;
-		}
-		this.tamanho++;
+		this.inserirFim(novo);
 	}
 
 	public void removerInicio() {
@@ -67,6 +58,7 @@ public class Fila<T> {
 		return null;
 	}
 
+	// Busca por matricula de funcionario
 	public No<T> buscar(int valor) {
 		No<T> aux = this.inicio;
 

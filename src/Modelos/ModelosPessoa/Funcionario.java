@@ -5,7 +5,7 @@ import Utilitarios.Excecao;
 public class Funcionario extends Pessoa implements IAtenderCliente {
 	int matricula;
 
-	public Funcionario(String nome, String CPF,int matricula) throws Excecao {
+	public Funcionario(String nome, String CPF, int matricula) throws Excecao {
 		super(nome, CPF);
 		this.matricula = matricula;
 	}
@@ -20,6 +20,5 @@ public class Funcionario extends Pessoa implements IAtenderCliente {
 
 	@Override
 	public void atenderCliente() {
-		
 	}
 }

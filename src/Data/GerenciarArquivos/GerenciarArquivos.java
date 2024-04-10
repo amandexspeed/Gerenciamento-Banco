@@ -14,28 +14,29 @@ import Modelos.ModelosPessoa.Funcionario;
 import Utilitarios.Excecao;
 
 import java.io.FileReader;
-import java.io.BufferedReader; 
-
+import java.io.BufferedReader;
 
 public class GerenciarArquivos {
 
-	public static void escreverArquivo(Funcionario objeto, String tipoFunc) {
-	        try (FileWriter fw = new FileWriter("src"+File.separator+"Data"+File.separator+"Arquivos" + File.separator + tipoFunc + ".txt", true);
-	             PrintWriter writer = new PrintWriter(fw)) {
-	
-	            if (objeto instanceof Funcionario) {
-	                writer.println(objeto.getNome() + "," + objeto.getCPF() + "," + objeto.getMatricula());
-	            } else {
-	            	JOptionPane.showMessageDialog(null,"Tipo de objeto não suportado.");
-	            }
-	        } catch (IOException e) {
-	            ExcecaoPainel.exibirExcecao("Erro ao escrever no arquivo: " + e.getMessage());
-	        }
-	    }
+    public static void escreverArquivo(Funcionario objeto, String tipoFunc) {
+        try (FileWriter fw = new FileWriter(
+                "src" + File.separator + "Data" + File.separator + "Arquivos" + File.separator + tipoFunc + ".txt",
+                true);
+                PrintWriter writer = new PrintWriter(fw)) {
+
+            if (objeto instanceof Funcionario) {
+                writer.println(objeto.getNome() + "," + objeto.getCPF() + "," + objeto.getMatricula());
+            } else {
+                JOptionPane.showMessageDialog(null, "Tipo de objeto não suportado.");
+            }
+        } catch (IOException e) {
+            ExcecaoPainel.exibirExcecao("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+    }
 
     public static List<Funcionario> lerArquivo(String tipoFunc) {
-        try (FileReader fr = new FileReader("src/Data/Arquivos/"+tipoFunc+".txt");
-             BufferedReader reader = new BufferedReader(fr)) {
+        try (FileReader fr = new FileReader("src/Data/Arquivos/" + tipoFunc + ".txt");
+                BufferedReader reader = new BufferedReader(fr)) {
 
             String linha;
             List<Funcionario> funcionarios = new ArrayList<Funcionario>();
@@ -48,7 +49,7 @@ public class GerenciarArquivos {
                 try {
                     Funcionario func = new Funcionario(nome, cpf, matricula);
                     funcionarios.add(func);
-                    
+
                 } catch (Excecao e) {
                     ExcecaoPainel.exibirExcecao(e.getMessage());
                 }
@@ -56,10 +57,9 @@ public class GerenciarArquivos {
             }
             return funcionarios;
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,"Erro ao ler o arquivo: " + e.getMessage());
-        }
-        catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,"Erro ao converter a matrícula para inteiro: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao ler o arquivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao converter a matrícula para inteiro: " + e.getMessage());
         }
         return null;
     }
@@ -68,26 +68,22 @@ public class GerenciarArquivos {
 
         List<Funcionario> funcionarios = lerArquivo(tipoFunc);
 
-        try (FileWriter fw = new FileWriter("src/Data/Arquivos/"+tipoFunc+".txt", false);
-             PrintWriter writer = new PrintWriter(fw)) {
+        try (FileWriter fw = new FileWriter("src/Data/Arquivos/" + tipoFunc + ".txt", false);
+                PrintWriter writer = new PrintWriter(fw)) {
 
-                for(Funcionario func:funcionarios){
+            for (Funcionario func : funcionarios) {
 
-                    if(func.getMatricula() != matricula){
+                if (func.getMatricula() != matricula) {
 
-                        writer.println(func.getNome() +","+func.getCPF()+ ","+func.getMatricula());
-
-                    }
+                    writer.println(func.getNome() + "," + func.getCPF() + "," + func.getMatricula());
 
                 }
 
-        }catch (IOException e) {
+            }
+
+        } catch (IOException e) {
             ExcecaoPainel.exibirExcecao("Erro ao escrever no arquivo: " + e.getMessage());
         }
 
-                
-            
     }
 }
-
-	
