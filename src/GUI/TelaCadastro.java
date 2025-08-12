@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JPanel {
@@ -93,9 +94,28 @@ public class TelaCadastro extends JPanel {
         	public void actionPerformed(ActionEvent e) {
         		String escolha = (String) comboBox.getSelectedItem();
 				
+                List<Funcionario> funcionariosCadastrados = GerenciarArquivos.lerArquivo("caixa");
+                funcionariosCadastrados.addAll(GerenciarArquivos.lerArquivo("gerentes"));
+
+                if(funcionariosCadastrados != null) {
+                    for (Funcionario func : funcionariosCadastrados) {
+
+                        if (func.getCPF().equals(campoCPF.getText())) {
+                            JOptionPane.showMessageDialog(null, "CPF já cadastrado. Por favor, insira um CPF diferente.");
+                            return; // Sai do método para evitar o cadastro
+                        }
+                        if (func.getMatricula() == Integer.parseInt(campoMatricula.getText())) {
+                            JOptionPane.showMessageDialog(null, "Matrícula já cadastrada. Por favor, insira uma matrícula diferente.");
+                            return; // Sai do método para evitar o cadastro
+                        }
+                        
+                    }
+                }
+
 				if (escolha.equals("Caixa")) {	            
 		            try {
-		            	Caixa caixa = new Caixa(campoNome.getText(), campoCPF.getText(), Integer.parseInt(campoMatricula.getText()));
+                        
+                        Caixa caixa = new Caixa(campoNome.getText(), campoCPF.getText(), Integer.parseInt(campoMatricula.getText()));
 		                GerenciarArquivos.escreverArquivo(caixa, "caixa");
 		                JOptionPane.showMessageDialog(null, "Caixa cadastrado com sucesso!");
                         GestaoFuncionarios.ListaCaixa.inserirInicio(caixa);

@@ -35,8 +35,7 @@ public class TelaTabela extends JPanel {
 
         setPreferredSize(new Dimension(1280, 720));
         setLayout(new BorderLayout());
-
-        
+ 
         tabelaPanel.add(caixaScrollPane);
         tabelaPanel.add(gerenteScrollPane);
 
@@ -55,6 +54,7 @@ public class TelaTabela extends JPanel {
         DefaultTableModel caixaModel = new DefaultTableModel();
         DefaultTableModel gerenteModel = new DefaultTableModel();
 
+        
         caixaModel.addColumn("Nome");
         caixaModel.addColumn("CPF");
         caixaModel.addColumn("Matrícula");
